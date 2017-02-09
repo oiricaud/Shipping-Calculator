@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">ShippingCalculator</string>
     <string name="weight">""</string>
-    <string name="total_shipping_cost">Total Shipping Cost</string>
-    <string name="added_cost">Added Cost</string>
-    <string name="base_cost">Base Cost</string>
-    <string name="basecost_placeholder">"Base Cost Place holder"</string>
+    <string name="total_shipping_cost">Total including Shipping Cost</string>
+    <string name="added_cost">Added Cost 20%</string>
+    <string name="base_cost">Base Cost 10% </string>
+    <string name="basecost_placeholder">""</string>
     <string name="addedcost_placeholder">"Added Cost place holder"</string>
-    <string name="totalshippingcost_placeholder">" Total Shipping Cost "</string>
+    <string name="totalshippingcost_placeholder">" Total including Shipping Cost "</string>
+    <string name="calculate">Calculate</string>
+    <string name="enter_weight_in_oz">Enter weight in oz</string>
 </resources>

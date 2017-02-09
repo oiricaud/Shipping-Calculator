@@ -4,19 +4,84 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = ""; // Debugging
+
+    // MODEL
+    private Calculate calculator;
+
+    // VIEWS
+    private TextView weightPackageView;
+    private TextView baseCostView;
+    private TextView addedCostView;
+    private TextView totalShippingCostView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final MainModel model = new MainModel(); // Call MainModel class
+        calculator = new Calculate();
+        weightPackageView = (TextView) findViewById(R.id.editText); // get the input from the  the user
+        baseCostView = (TextView) findViewById(R.id.textView4);
+        addedCostView = (TextView) findViewById(R.id.textView5);
+        totalShippingCostView = (TextView) findViewById(R.id.textView6);
 
-        final TextView weightOfPackage = (TextView) findViewById(R.id.editText); // get the input from the  the user
+        baseCostView.setText("$0.00");
+        addedCostView.setText("$0.00");
+        totalShippingCostView.setText("$0.00");
+
+        weightPackageView.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length() >= 1) {
+                    int convertEditable = Integer.parseInt(s.toString());
+
+                    calculator.addWeight(convertEditable);
+                    calculator.addBaseCost(Integer.parseInt(s.toString()));
+                    calculator.addaddedCost(Integer.parseInt(s.toString()));
+                    calculator.addtotalShippingCost(Integer.parseInt(s.toString()));
+
+                    baseCostView.setText(calculator.getBaseCost());
+                    addedCostView.setText(calculator.getaddedCost());
+                    totalShippingCostView.setText(calculator.gettotalShippingCost());
+                }
+                else{
+                    calculator.addWeight(0);
+                }
+          //
+            }
+        });
+
+    }
+    /*
+        if(calculator.getWeight() == 0 ){
+            calculator.addBaseCost();
+            baseCostView.setText(calculator.getBaseCost().toString());
+        } */
+
+  //      addedCostView.setText(calculator.getAddedCost().toString());
+  //      totalShippingCostView.setText(calculator.getShippingCost.toString());
+
+
+/*
+        calculateOnTap();
+        //final TextView weightOfPackage = (TextView) findViewById(R.id.editText); // get the input from the  the user
         final TextView baseCost = (TextView) findViewById(R.id.textView4);
         final TextView addedCost = (TextView) findViewById(R.id.textView5);
         final TextView totalShippingCost = (TextView) findViewById(R.id.textView6);
@@ -40,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
                 int convertEditable =  Integer.parseInt(s.toString());
                 model.setWeightOfPackage(convertEditable);
 
-                /* Below is where how much we will charge the customer. */
+                // Below is where how much we will charge the customer.
                 model.setBaseCost(baseCost);
                 model.setAddedCost(addedCost);
                 model.totalShippingCost(totalShippingCost);
             }
         });
     }
-
+           */
 }
