@@ -1,5 +1,8 @@
 package edu.utep.cs.cs4330.shippingcalculator;
 
+/**
+ * Model Class
+ */
 class Calculate {
     private Integer oz;
     private Double baseCost;
